@@ -13,3 +13,5 @@ A change to to the codebase whether it be a new file, files removed, or files mo
 
 * What is a merge conflict?
 When two different branches contain changes to the same part(s) of the same file(s).
+
+A change
