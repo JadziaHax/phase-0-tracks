@@ -1,0 +1,22 @@
+- Approach Elevator
+- Examine Room Key to determine destination floor
+    -first digit is floor
+- Press up or down button
+    - if only one button (up or down) is present, press it
+    - if multiple buttons exist (both up and down)
+      - determine current floor
+        -sign near elevator should indicate floor
+      - subtract the current floor from the destination floor
+        -if total is negative press down button
+        -if total is positive press up button
+- enter elevator when doors open
+- press button with destination floor on it
+- exit elevator when indicator indicates destination floor is reached and doors open
+
+
+Checking mail
+- wait until 1pm
+- walk to mailbox
+- open mail box
+- if mail is present, retrieve mail and close mailbox and return to apartment
+- if mail is not present, close mailbox, return to apartment and repeat steps from second line every 2 hours until mail is retrieved or until the time is after 7pm
