@@ -7,3 +7,5 @@ class Puppy
 
 end
 
+maggie = Puppy.new
+maggie.fetch("rope")
