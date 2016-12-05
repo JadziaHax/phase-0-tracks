@@ -1,6 +1,6 @@
 The class WordGame class will do the following
-- allow a word to be specified
-- count the number of turns, limiting them to the character-length of word plus 1
+- takes a word and stores it
+- sets the number of turns equal to the character-length of the word plus one and provides the number of turns remaining when asked
 - hold a state of whether or not the word has been guessed
 - maintain a list of letters that have been guessed previously
 - compare a provided letter to that list
