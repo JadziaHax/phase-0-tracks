@@ -1,0 +1,9 @@
+The class WordGame class will do the following
+- allow a word to be specified
+- count the number of turns, limiting them to the character-length of word plus 1
+- hold a state of whether or not the word has been guessed
+- maintain a list of letters that have been guessed previously
+- compare a provided letter to that list
+- if the letter is guessed that in the word, display where in the word that letter appears
+- display a congratulatory message for a win (the word is guessed)
+- display a taunting message for a loss (the word is not guessed in the number of turns given)
