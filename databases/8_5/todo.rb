@@ -21,8 +21,12 @@ def return_item(db, id)
   db.execute('SELECT * FROM todo WHERE id=?', [id])
 end
 
+def mark_complete(db, id)
+  db.execute('UPDATE todo SET complete="true" WHERE id=?', [id])
+end
+
 =begin
-#add_item driver code
+#add_item test driver code
 puts "Please enter a task"
 user_task = gets.chomp
 puts "Please enter a deadline date in the following format: DD-MM-YYYY"
@@ -32,4 +36,12 @@ tasks = db.execute("SELECT * FROM todo")
 tasks.each do |task|
   puts "#{task[1]} is due by #{task[2]}"
 end
+
+
+#return_item test driver code
+p return_item(db, 1)
+p return_item(db, 2)
 =end
+
+mark_complete(db, 1)
+p return_item(db, 1)
