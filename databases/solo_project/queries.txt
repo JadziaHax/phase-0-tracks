@@ -1,0 +1,28 @@
+select * from agents;
+
+--------------
+
+update agents set cont_edu_complete="true" where first_name="Rebecca" and last_name="Whitfield";
+
+--------------
+
+select * from properties, agents where properties.agent_id=agents.id;
+
+--------------
+
+select agents.last_name, properties.name, properties.value from properties join agents on properties.agent_id=agents.id;
+
+---------------
+
+delete from properties where name="Lot 2934";
+
+---------------
+
+select properties.name, agents.first_name, agents.last_name from agents left join properties on properties.agent_id=agents.id;
+
+---------------
+
+select properties.name, properties.value from properties right join agents on properties.agent_id=agents.id where last_name = jimenez;
+
+right joins are not supported by sqlite?
+----------------
