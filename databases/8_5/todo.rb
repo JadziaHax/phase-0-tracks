@@ -33,26 +33,33 @@ def delete_item(db,id)
   db.execute('DELETE FROM todo WHERE id=?', [id])
 end
 
-puts "1. Add item\n2. View List\n3. Set item as complete\n4. Set item as incomplete\n5. Delete Item\n Please select a number from the menu"
+done = false
+until done == true
+  puts "\n1. Add item\n2. View List\n3. Set item as complete\n4. Set item as incomplete\n5. Delete Item\n6. Exit\n Please select a number from the menu"
 
-option = ""
-until option == 1 || option == 2 || option == 3 || option == 4 || option == 5
-  option = gets.chomp.to_i
+  option = nil
+
+  until option == 1 || option == 2 || option == 3 || option == 4 || option == 5 || option == 6
+    option = gets.chomp.to_i
+  end
+
+  case option
+  when 6
+    done = true
+  when 1
+    puts "Please enter a task"
+    user_task = gets.chomp
+    puts "Please enter a deadline date in the following format: DD-MM-YYYY"
+    user_deadline = gets.chomp
+    add_item(db, user_task, user_deadline)
+  when 2
+    puts "\n"
+    tasks = db.execute("SELECT * FROM todo")
+    tasks.each do |task|
+      puts "Task #{task[0]} is #{task[1]} is due by #{task[2]}. Complete: #{task[3]}."
+    end
+  end
 end
-
-case option
-when 1
-  puts "Please enter a task"
-  user_task = gets.chomp
-  puts "Please enter a deadline date in the following format: DD-MM-YYYY"
-  user_deadline = gets.chomp
-  add_item(db, user_task, user_deadline)
-when 2
-  tasks = db.execute("SELECT * FROM todo")
-  tasks.each do |task|
-  puts "Task #{task 0} is #{task[1]} is due by #{task[2]}. Complete: #{task[3]}."
-end
-
 =begin
 #add_item test driver code
 puts "Please enter a task"
