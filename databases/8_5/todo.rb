@@ -24,7 +24,7 @@ def return_all(db)
   puts "\n"
   tasks = db.execute("SELECT * FROM todo")
   tasks.each do |task|
-    puts "Task Number #{task[0]} is #{task[1]} is due by #{task[2]}. Complete: #{task[3]}."
+    puts "Task Number #{task[0]} is '#{task[1]}' is due by #{task[2]}. Complete: #{task[3]}."
   end
 end
 
@@ -71,6 +71,11 @@ until done == true
     puts "\nPlease specify the Number of the task to be marked incomplete."
     choice = gets.chomp.to_i
     undo_mark_complete(db, choice)
+  when 5
+    return_all(db)
+    puts "\nPlease specify the Number of the task to be deleted."
+    choice = gets.chomp.to_i
+    delete_item(db, choice)
   end
 end
 
