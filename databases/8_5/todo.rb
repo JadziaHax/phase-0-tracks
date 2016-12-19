@@ -29,6 +29,10 @@ def undo_mark_complete(db, id)
   db.execute('UPDATE todo SET complete="false" WHERE id=?', [id])
 end
 
+def delete_item(db,id)
+  db.execute('DELETE FROM todo WHERE id=?', [id])
+end
+
 =begin
 #add_item test driver code
 puts "Please enter a task"
@@ -41,7 +45,6 @@ tasks.each do |task|
   puts "#{task[1]} is due by #{task[2]}"
 end
 
-
 #return_item test driver code
 p return_item(db, 1)
 p return_item(db, 2)
@@ -49,8 +52,13 @@ p return_item(db, 2)
 #mark_complete test driver code
 mark_complete(db, 1)
 p return_item(db, 1)
+
+#undo_mark_complete test driver code
+p return_item(db, 1)
+undo_mark_complete(db, 1)
+p return_item(db, 1)
 =end
 
 p return_item(db, 1)
-undo_mark_complete(db, 1)
+delete_item(db, 1)
 p return_item(db, 1)
