@@ -20,6 +20,14 @@ def return_item(db, id)
   db.execute('SELECT * FROM todo WHERE id=?', [id])
 end
 
+def return_all(db)
+  puts "\n"
+  tasks = db.execute("SELECT * FROM todo")
+  tasks.each do |task|
+    puts "Task Number #{task[0]} is #{task[1]} is due by #{task[2]}. Complete: #{task[3]}."
+  end
+end
+
 def mark_complete(db, id)
   db.execute('UPDATE todo SET complete="true" WHERE id=?', [id])
 end
@@ -52,26 +60,14 @@ until done == true
     user_deadline = gets.chomp
     add_item(db, user_task, user_deadline)
   when 2
-    puts "\n"
-    tasks = db.execute("SELECT * FROM todo")
-    tasks.each do |task|
-      puts "Task Number #{task[0]} is #{task[1]} is due by #{task[2]}. Complete: #{task[3]}."
-    end
+    return_all(db)
   when 3
-    puts "\n"
-    tasks = db.execute("SELECT * FROM todo")
-    tasks.each do |task|
-      puts "Task Number #{task[0]} is #{task[1]} is due by #{task[2]}. Complete: #{task[3]}."
-    end
+    return_all(db)
     puts "\nPlease specify the Number of the task to be marked complete."
     choice = gets.chomp.to_i
     mark_complete(db, choice)
   when 4
-    puts "\n"
-    tasks = db.execute("SELECT * FROM todo")
-    tasks.each do |task|
-      puts "Task Number #{task[0]} is #{task[1]} is due by #{task[2]}. Complete: #{task[3]}."
-    end
+    return_all(db)
     puts "\nPlease specify the Number of the task to be marked incomplete."
     choice = gets.chomp.to_i
     undo_mark_complete(db, choice)
