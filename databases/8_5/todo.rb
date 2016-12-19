@@ -1,5 +1,4 @@
 require 'sqlite3'
-require 'faker'
 
 db = SQLite3::Database.new("todo.db")
 
@@ -56,10 +55,29 @@ until done == true
     puts "\n"
     tasks = db.execute("SELECT * FROM todo")
     tasks.each do |task|
-      puts "Task #{task[0]} is #{task[1]} is due by #{task[2]}. Complete: #{task[3]}."
+      puts "Task Number #{task[0]} is #{task[1]} is due by #{task[2]}. Complete: #{task[3]}."
     end
+  when 3
+    puts "\n"
+    tasks = db.execute("SELECT * FROM todo")
+    tasks.each do |task|
+      puts "Task Number #{task[0]} is #{task[1]} is due by #{task[2]}. Complete: #{task[3]}."
+    end
+    puts "\nPlease specify the Number of the task to be marked complete."
+    choice = gets.chomp.to_i
+    mark_complete(db, choice)
+  when 4
+    puts "\n"
+    tasks = db.execute("SELECT * FROM todo")
+    tasks.each do |task|
+      puts "Task Number #{task[0]} is #{task[1]} is due by #{task[2]}. Complete: #{task[3]}."
+    end
+    puts "\nPlease specify the Number of the task to be marked incomplete."
+    choice = gets.chomp.to_i
+    undo_mark_complete(db, choice)
   end
 end
+
 =begin
 #add_item test driver code
 puts "Please enter a task"
