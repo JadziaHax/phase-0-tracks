@@ -25,6 +25,10 @@ def mark_complete(db, id)
   db.execute('UPDATE todo SET complete="true" WHERE id=?', [id])
 end
 
+def undo_mark_complete(db, id)
+  db.execute('UPDATE todo SET complete="false" WHERE id=?', [id])
+end
+
 =begin
 #add_item test driver code
 puts "Please enter a task"
@@ -41,7 +45,12 @@ end
 #return_item test driver code
 p return_item(db, 1)
 p return_item(db, 2)
+
+#mark_complete test driver code
+mark_complete(db, 1)
+p return_item(db, 1)
 =end
 
-mark_complete(db, 1)
+p return_item(db, 1)
+undo_mark_complete(db, 1)
 p return_item(db, 1)
