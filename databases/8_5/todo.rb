@@ -12,3 +12,7 @@ db.execute(<<-SQL
   )
 SQL
 )
+
+def add_item(db, task, deadline)
+  db.execute('INSERT INTO todo (task, deadline, complete) VALUES (?, ?, "false")', [task, deadline])
+end
