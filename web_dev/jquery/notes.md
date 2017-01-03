@@ -1,0 +1,1 @@
+I did some jquery as part of a codeacademy course a couple years back. I think I'll just look at it again.
